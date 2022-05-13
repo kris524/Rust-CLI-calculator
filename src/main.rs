@@ -24,19 +24,27 @@ fn operate(operator: char, first_number: f32, second_number: f32) -> f32 {
 
 fn main() {
 
-    let args = Cli::parse();
+    // let args = Cli::parse();
+    
+    
+    let first: String = std::env::args().nth(1).unwrap(); 
+    println!("The first number is: {}", first);
+    let operator: char = std::env::args().nth(2).unwrap().chars().next().unwrap();
+    println!("The operator is: {}", operator);
+    let second: String = std::env::args().nth(3).unwrap();
+    println!("The second number is: {}", second);
+
+    let first_number = first.parse::<f32>().unwrap();
+    let second_number = second.parse::<f32>().unwrap();
+    
+
+    let result = operate(operator, first_number, second_number );
+    println!("Result: {}", result);
+
     let m = Cli {
         first_number: 1.0,
         operation: '+',
         second_number: 4.0
     };
-    
-    let first_number = std::env::args().nth(1).parse::<f32>();
-    let operator = std::env::args().nth(1);
-    let 
-    // let operator: String = std::env::args().nth(2).expect("no operation selected");
-    // let second_number = std::env::args().nth(3).expect("no number is given");
-    let result = operate(first_number, Cli::first_number, second_number)
-
 }
  

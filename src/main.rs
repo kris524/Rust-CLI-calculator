@@ -1,4 +1,3 @@
-use std::env;
 use clap::Parser;
 
 #[derive(Parser)]
@@ -16,7 +15,7 @@ impl Cli {
         let result = match operator {
             '+' => first_number + second_number,
             '-' => first_number - second_number,
-            '*' => first_number * second_number,
+            'x' => first_number * second_number,
             '/' => first_number / second_number,
             _ => panic!("Invalid operation")
 
@@ -38,7 +37,7 @@ fn main() {
     let second_number = commands.second_number.parse::<f32>().unwrap();
     
 
-    let result = operate(commands.operation, first_number, second_number );
+    let result = Cli::operate(commands.operation, first_number, second_number );
     println!("Result: {}", result);
 
     
